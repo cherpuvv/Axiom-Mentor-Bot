@@ -9,7 +9,7 @@ __pycache__/
 .env
 
 # Data / database
-data/*
+data/
 !data/.gitkeep
 *.sqlite
 *.db
