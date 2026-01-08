@@ -1,12 +1,13 @@
 def create_user():
     
-    id = 0
+    uid = 0
 
     choice_role = input('Выберите роль (mentor / trainee): ').strip().lower()
 
     while choice_role not in ('mentor', 'trainee'):
         choice_role = input('Ошибка. Выберите роль (mentor / trainee): ').strip().lower()
-        id += 1
+
+    uid += 1
 
     if choice_role == 'mentor':
         checklist_key = 'trainee'
@@ -16,13 +17,16 @@ def create_user():
         print('Заполните чек-лист стажера (оцените процесс)')
 
     checklist = []
+    checklist_size = 5
 
-    for i in range(5):
-        rate = input(f'Введите оценку №{i + 1} от 1 до 5:')
+    for i in range(checklist_size):
+        rate = int(input(f'Введите оценку №{i + 1} от 1 до 5:'))
+        while rate not in (1, 2, 3, 4, 5):
+            rate = int(input(f'Ошибка. Введите оценку №{i + 1} от 1 до 5:'))
         checklist.append(rate)
     
     user = {
-        'id': id,
+        'id': uid,
         'role': choice_role,
         'checklists': {
             checklist_key: checklist
