@@ -3,7 +3,7 @@ class User():
     Класс для создания пользователя с ролью наставника 
     или стажера, заполнением чек-листа и расчетом среднего балла.
     '''
-    uid = 0
+    uid = 1
 
     def __init__(self):
         self.id = User.uid
@@ -52,9 +52,15 @@ class User():
     
     def get_user_data(self):
         return self.user_data
+    
+    def user_output(self):
+        print('Данные пользователя:')
+        print(f'ID: {self.id}')
+        print(f'Роль: {self.role}')
+        print(f'Средний балл: {self.avg}')
+        print(f'Чек-лист: {self.checklist}')
 
 users = []
 new_user = User()
 users.append(new_user.get_user_data())
-print('\nСозданный пользователь:')
-print(new_user.get_user_data())
+print(new_user.user_output())
