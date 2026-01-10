@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 test_list.py
 test_dict.py
+test_class.py
 
 # Virtual environment
 .venv/
