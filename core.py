@@ -11,14 +11,6 @@ class User():
         self.role = self.choose_role()
         self.checklist = self.checklist_fill()
         self.avg = self.get_avg()
-        self.user_data = {
-            'id': self.id,
-            'role': self.role,
-            'avg': self.avg,
-            'checklists': {
-                'mentor' if self.role == 'trainee' else 'trainee': self.checklist
-        }
-    }
         
     def choose_role(self):
         choice_role = input('Выберите роль (mentor / trainee): ').strip().lower()
@@ -51,8 +43,16 @@ class User():
         return sum(self.checklist) / len(self.checklist)
     
     def get_user_data(self):
+        self.user_data = {
+            'id': self.id,
+            'role': self.role,
+            'avg': self.get_avg(),
+            'checklists': {
+                'mentor' if self.role == 'trainee' else 'trainee': self.checklist
+            }
+        }
         return self.user_data
-    
+
     def user_output(self):
         print('Данные пользователя:')
         print(f'ID: {self.id}')
@@ -64,4 +64,4 @@ users = []
 new_user = User()
 users.append(new_user.get_user_data())
 
-User.user_output(new_user)
+new_user.user_output()
