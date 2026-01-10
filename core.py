@@ -63,4 +63,5 @@ class User():
 users = []
 new_user = User()
 users.append(new_user.get_user_data())
-print(new_user.user_output())
+
+User.user_output(new_user)
