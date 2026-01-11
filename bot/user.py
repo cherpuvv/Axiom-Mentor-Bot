@@ -1,13 +1,19 @@
+import json
+
+def get_next_id(users):
+    if not users:
+        return 1
+    else:
+        return max(user['id'] for user in users) + 1
+
 class User():
     '''
     Класс для создания пользователя с ролью наставника 
     или стажера, заполнением чек-листа и расчетом среднего балла.
     '''
-    uid = 1
 
-    def __init__(self):
-        self.id = User.uid
-        User.uid += 1
+    def __init__(self, user_id):
+        self.id = user_id
         self.role = self.choose_role()
         self.checklist = self.checklist_fill()
         self.avg = self.get_avg()
@@ -60,8 +66,31 @@ class User():
         print(f'Средний балл: {self.avg}')
         print(f'Чек-лист: {self.checklist}')
 
-users = []
-new_user = User()
+def load_data(filename='data/users.json'):
+    try:
+        with open(filename, 'r', encoding='utf-8') as f:
+            return json.load(f)
+        
+    except FileNotFoundError:
+        return []
+    
+    except json.JSONDecodeError:
+        return []
+    
+def save_data(users, filename='data/users.json'):
+    try:
+        with open(filename, 'w', encoding='utf-8') as f:
+            json.dump(users, f, ensure_ascii=False, indent=4)
+
+    except FileNotFoundError:
+        return []
+    
+    except json.JSONDecodeError:    
+        return []
+
+users = load_data()
+new_user = User(get_next_id(users))
 users.append(new_user.get_user_data())
+save_data(users)
 
 new_user.user_output()

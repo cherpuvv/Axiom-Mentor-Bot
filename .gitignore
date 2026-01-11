@@ -1,7 +1,6 @@
 # Python
 __pycache__/
 *.py[cod]
-test_files/
 
 # Virtual environment
 .venv/
