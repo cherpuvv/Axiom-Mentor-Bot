@@ -1,6 +1,7 @@
 # Python
 __pycache__/
 *.py[cod]
+older_core.py
 
 # Virtual environment
 .venv/
