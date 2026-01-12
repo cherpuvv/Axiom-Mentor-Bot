@@ -15,12 +15,12 @@ class User():
         посчитать среднее значение по чек-листу
     '''
 
-    def __init__(self, uid: int, role: str):
+    def __init__(self, uid, role):
 
         if not isinstance(uid, int) or uid <= 0:
             raise ValueError('invalid id')
         
-        if role not in 'наставник' or 'стажёр':
+        if role not in ('наставник' or 'стажёр'):
             raise ValueError('invalid role')
         
         self.id = uid
